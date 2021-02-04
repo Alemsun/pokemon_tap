@@ -16,6 +16,6 @@ The Data Pipeline components are:
 - Docker Compose
 - Web Browser
 
-#Usage
+# Usage
 First, download or clone the repository using:
-'''https://github.com/Alemsun/pokemon_tap.git'''
+```git clone https://github.com/Alemsun/pokemon_tap.git```
