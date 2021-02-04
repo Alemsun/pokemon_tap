@@ -1,7 +1,7 @@
 # TAP x Pokemon
 Data pipeline from Pokemon Showdown to Kibana for a University Project.
 
-<p align="center"><img src="./doc/data_pipeline.png" alt="drawing" width="200"/></p>
+<p align="center"><img src="./doc/data_pipeline.png" alt="drawing" width="800"/></p>
 
 # Description
 The Data Pipeline components are:
