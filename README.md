@@ -11,7 +11,31 @@ The Data Pipeline components are:
 - **Elasticsearch**: Indexing incoming data.
 - **Kibana**: UI dedicated to Data Visualization.
 
+
+More technical details in the specific folder, more details on the actual usage in this project in doc.
+
 # Requirements
 - Docker
 - Docker Compose
 - Web Browser
+
+# Usage
+First, download or clone the repository using:
+```
+git clone https://github.com/Alemsun/pokemon_tap.git
+```
+Then move into the folder *pokemon_tap*:
+```
+cd path/to/showdown_tap/
+```
+Run all the docker containers executing the following line:
+```
+docker-compose up
+```
+Finally, after a short period of time, necessary to produce data from the Showdown to Kibana, open a Web Browser and insert the following URL:
+```
+localhost:5601
+```
+
+Feel free to explore and create new visualizations!
+
