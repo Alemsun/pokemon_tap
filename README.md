@@ -18,4 +18,6 @@ The Data Pipeline components are:
 
 # Usage
 First, download or clone the repository using:
-```git clone https://github.com/Alemsun/pokemon_tap.git```
+```
+git clone https://github.com/Alemsun/pokemon_tap.git
+```
