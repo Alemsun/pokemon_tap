@@ -10,3 +10,8 @@ The Data Pipeline components are:
 - **Spark**: defined as a unified analitycs engine, here it has the job to *process* the incoming data stream, make *predictions* about battle results using the specific **MLlib** library and send all the above to Elasticsearch.
 - **Elasticsearch**: Indexing incoming data.
 - **Kibana**: UI dedicated to Data Visualization.
+
+# Requirements
+- Docker
+- Docker Compose
+- Web Browser
