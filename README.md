@@ -1,7 +1,7 @@
 # TAP x Pokemon
 Data pipeline from Pokemon Showdown to Kibana for a University Project.
 
-![Data Pipeline](https://github.com/Alemsun/pokemon_tap/tree/main/doc/data_pipeline.png)
+<p align="center"><img src="./docs/data_pipeline.png" alt="drawing" width="200"/></p>
 
 # Description
 The Data Pipeline components are:
