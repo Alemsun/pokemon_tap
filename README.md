@@ -11,6 +11,9 @@ The Data Pipeline components are:
 - **Elasticsearch**: Indexing incoming data.
 - **Kibana**: UI dedicated to Data Visualization.
 
+
+More technical details in the specific folder, more details on the actual usage in this project in doc.
+
 # Requirements
 - Docker
 - Docker Compose
