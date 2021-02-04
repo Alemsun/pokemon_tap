@@ -1,0 +1,19 @@
+10.0.0.21       ZK-ui
+
+10.0.0.22:2181  ZK-Server
+
+10.0.0.23:9092  Kafka Server
+    10.0.0.23:9092  Broker-List
+
+#ATTENZIONE
+localhost:9092 Docker-Windows
+10.0.0.23:9092 Docker
+
+#10.0.0.22:2181  Kafka-create Topic
+
+10.0.0.24:(9092)   Kafka-Create Topic
+
+10.0.0.52:5601   Kibana
+
+10.100.0.20 - Showdown_bot
+10.100.0.30 -Logstash

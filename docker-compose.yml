@@ -1,0 +1,99 @@
+version: "3"
+
+services:
+  zookeeper:
+    build: kafka
+    image: zookeeper:kafka
+    # container_name: zookeeper
+    environment: 
+        - KAFKA_ACTION=start-zk
+    networks: 
+      poke:
+        ipv4_address: "10.100.0.22"
+    ports:
+      - "2181:2181"
+
+  kafka:
+    build: kafka
+    image: server:kafka
+    depends_on: 
+      - zookeeper
+    # container_name: kafkaServer
+    environment: 
+      - KAFKA_ACTION=start-kafka
+    networks: 
+      poke:
+        ipv4_address: "10.100.0.23"
+    ports: 
+      - "9092:9092"
+      - "9093:9093"
+  
+  # docker run --ip 10.100.0.20 --network poke -p 5000:5000 --env-file ../docker_sd/tap2021.env tap2021:showdown
+  bot1:
+    build: docker_sd
+    image: bot1:showdown
+    depends_on: 
+      - logstash
+    networks: 
+      poke:
+        ipv4_address: "10.100.0.20"
+    ports: 
+      - "5000:5000"
+    env_file: docker_sd/env_files/bot1.env
+  
+  # docker run --ip 10.100.0.30 --network poke --name logstash logstash:showdown
+  logstash:
+    build: logstash
+    image: logstash:showdown
+    # container_name: logstash
+    depends_on: 
+      - kafka
+    networks: 
+      poke:
+        ipv4_address: "10.100.0.30"
+
+  # docker run -e SPARK_ACTION=spark-submit-python -p 4040:4040 --network poke --name sparkSubmit -it showdown:spark $1 $2
+  spark:
+    build: spark
+    image: spark:showdown
+    # container_name: spark
+    depends_on: 
+      - elasticsearch
+    networks:
+      - poke
+    ports: 
+      - "4040:4040"
+    environment: 
+      - "SPARK_ACTION=spark-submit-python"
+    restart: always
+  
+  # docker run -t  -p 9200:9200 -p 9300:9300 --ip 10.100.0.51 --name elasticsearch --network poke -e "discovery.type=single-node"  showdown:elasticsearch
+  elasticsearch:
+    build: elasticsearch
+    image: es:showdown
+    # container_name: elasticsearch
+    networks: 
+      poke:
+        ipv4_address: "10.100.0.51"
+    ports: 
+      - "9200:9200"
+      - "9300:9300"
+    environment: 
+      - "discovery.type=single-node"
+  
+  # docker run -p 5601:5601 --ip 10.100.0.52 --network poke showdown:kibana
+  kibana:
+    build: kibana
+    image: kibana:showdown
+    networks: 
+      poke:
+        ipv4_address: "10.100.0.52"
+    ports: 
+      - "5601:5601"
+  
+networks: 
+  poke:
+    ipam:
+      driver: default
+      config: 
+        - subnet: 10.100.0.0/24

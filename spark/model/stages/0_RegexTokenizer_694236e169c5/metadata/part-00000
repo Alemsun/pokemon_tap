@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.RegexTokenizer","timestamp":1612304211932,"sparkVersion":"2.4.5","uid":"RegexTokenizer_694236e169c5","paramMap":{"outputCol":"tokens","inputCol":"pokemon","pattern":"\\W"},"defaultParamMap":{"outputCol":"RegexTokenizer_694236e169c5__output","toLowercase":true,"pattern":"\\s+","gaps":true,"minTokenLength":1}}
