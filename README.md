@@ -1,2 +1,2 @@
-# showdown_tap
-Data pipeline from Pokemon Showdown to Kibana for a University Project
+# TAP x Pokemon
+Data pipeline from Pokemon Showdown to Kibana for aUniversity Project
