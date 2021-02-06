@@ -4,6 +4,3 @@
 10.100.0.23:9092    -   Kafka Server
 10.100.0.51:9200    -   ElasticSearch
 10.100.0.52:5601    -   Kibana
-
-
-
