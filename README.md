@@ -28,7 +28,7 @@ git clone https://github.com/Alemsun/pokemon_tap.git
 ```
 Then move into the folder *pokemon_tap*:
 ```
-cd path/to/showdown_tap/
+cd path/to/pokemon_tap/
 ```
 Run all the docker containers executing the following line:
 ```
