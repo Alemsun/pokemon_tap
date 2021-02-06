@@ -61,6 +61,10 @@ schema = tp.StructType([
 
 try:
     df = spark.read.csv('/shared_data/pokeDF.csv', schema, header=True, sep =',')
+    if df is None:
+        df = spark.read.csv('../tap/spark/dataset/pokeDF.csv', schema, header=True, sep =',')
+except:
+    print("DATAFRAME LOADING ERROR")
 
 pokeDF = df.select('pokemon', 'win')
 pokeDF.show()
