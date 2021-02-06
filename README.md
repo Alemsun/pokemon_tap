@@ -14,7 +14,7 @@ The Data Pipeline components are:
 - **[Kibana](https://www.elastic.co/kibana)**: UI dedicated to Data Visualization.
 
 
-More technical details in the specific folder, more details on the actual usage in this project in doc.
+More technical details in the specific folder, more details on the actual usage in this project in **doc**.
 
 # Requirements
 - Docker
