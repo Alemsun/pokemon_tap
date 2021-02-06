@@ -3,7 +3,7 @@ Data pipeline from Pokemon Showdown to Kibana for a University Project.
 
 <p align="center"><img src="./doc/img/data_pipeline.png" alt="Data Pipeline" width="1000"/></p>
 
-# Description
+## Description
 The Data Pipeline components are:
 
 - **Docker_sd**: executing one or multiple bots made by pmariglia (https://github.com/pmariglia/showdown).
@@ -16,12 +16,12 @@ The Data Pipeline components are:
 
 More technical details in the specific folder, more details on the actual usage in this project in **doc**.
 
-# Requirements
+## Requirements
 - Docker
 - Docker Compose
 - Web Browser
 
-# Usage
+## Usage
 First, download or clone the repository using:
 ```
 git clone https://github.com/Alemsun/pokemon_tap.git
