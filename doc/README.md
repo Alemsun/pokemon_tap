@@ -1,5 +1,5 @@
 # Tap x Pokemon Notebook
-Technical presentation designed for TAP University Course
+Technical presentation designed for TAP University Course.
 
 # Usage Alternatives
 
