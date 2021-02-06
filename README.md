@@ -17,7 +17,7 @@ The Data Pipeline components are:
 More technical details in the specific folder, more details on the actual usage in this project in **doc**.
 
 ## Requirements
-- Docker
+- Docker (Desktop on Windows)
 - Docker Compose
 - Web Browser
 
