@@ -9,4 +9,4 @@ docker-compose up <container_name>
 ```
 
 ## Scripts
-As previously mentioned, have a look in the **bin/** for more details on the correct usage. 
+As previously mentioned, have a look inside the **bin/** for more details on the correct usage. 
