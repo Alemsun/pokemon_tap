@@ -4,7 +4,7 @@ services:
   zookeeper:
     build: kafka
     image: zookeeper:kafka
-    # container_name: zookeeper
+    container_name: zookeeper_compose
     environment: 
         - KAFKA_ACTION=start-zk
     networks: 
@@ -18,7 +18,7 @@ services:
     image: server:kafka
     depends_on: 
       - zookeeper
-    # container_name: kafkaServer
+    container_name: kafkaServer_compose
     environment: 
       - KAFKA_ACTION=start-kafka
     networks: 
@@ -28,10 +28,10 @@ services:
       - "9092:9092"
       - "9093:9093"
   
-  # docker run --ip 10.100.0.20 --network poke -p 5000:5000 --env-file ../docker_sd/tap2021.env tap2021:showdown
   bot1:
     build: docker_sd
     image: bot1:showdown
+    container_name: bot1_compose
     depends_on: 
       - logstash
     networks: 
@@ -41,22 +41,20 @@ services:
       - "5000:5000"
     env_file: docker_sd/env_files/bot1.env
   
-  # docker run --ip 10.100.0.30 --network poke --name logstash logstash:showdown
   logstash:
     build: logstash
     image: logstash:showdown
-    # container_name: logstash
+    container_name: logstash_compose
     depends_on: 
       - kafka
     networks: 
       poke:
         ipv4_address: "10.100.0.30"
 
-  # docker run -e SPARK_ACTION=spark-submit-python -p 4040:4040 --network poke --name sparkSubmit -it showdown:spark $1 $2
-  spark:
+  spark_showdown:
     build: spark
     image: spark:showdown
-    # container_name: spark
+    container_name: spark_showdown
     depends_on: 
       - elasticsearch
     networks:
@@ -64,14 +62,47 @@ services:
     ports: 
       - "4040:4040"
     environment: 
-      - "SPARK_ACTION=spark-submit-python"
-    restart: always
-  
-  # docker run -t  -p 9200:9200 -p 9300:9300 --ip 10.100.0.51 --name elasticsearch --network poke -e "discovery.type=single-node"  showdown:elasticsearch
+      - "SPARK_ACTION=showdown"
+    restart: on-failure
+    volumes: 
+      - shared_volume:/shared_data/
+
+  # spark_dataframe:
+  #   build: spark
+  #   image: spark:showdown
+  #   # container_name: spark_dataframe
+  #   depends_on: 
+  #     - elasticsearch
+  #   networks:
+  #     - poke
+  #   ports: 
+  #     - "4041:4041"
+  #   environment: 
+  #     - "SPARK_ACTION=dataframe"
+  #   restart: on-failure
+  #   volumes: 
+  #     - shared_volume:/shared_data/
+      
+  # spark_training:
+  #   build: spark
+  #   image: spark:showdown
+  #   # container_name: spark_training
+  #   depends_on: 
+  #     - elasticsearch
+  #     # - spark_dataframe
+  #   networks:
+  #     - poke
+  #   ports: 
+  #     - "4042:4042"
+  #   environment: 
+  #     - "SPARK_ACTION=training"
+  #   volumes: 
+  #     - shared_volume:/shared_data/
+   
   elasticsearch:
     build: elasticsearch
     image: es:showdown
-    # container_name: elasticsearch
+    container_name: elasticsearch_compose
     networks: 
       poke:
         ipv4_address: "10.100.0.51"
@@ -81,10 +112,10 @@ services:
     environment: 
       - "discovery.type=single-node"
   
-  # docker run -p 5601:5601 --ip 10.100.0.52 --network poke showdown:kibana
   kibana:
     build: kibana
     image: kibana:showdown
+    container_name: kibana_compose
     networks: 
       poke:
         ipv4_address: "10.100.0.52"
@@ -97,3 +128,6 @@ networks:
       driver: default
       config: 
         - subnet: 10.100.0.0/24
+
+volumes:
+  shared_volume:

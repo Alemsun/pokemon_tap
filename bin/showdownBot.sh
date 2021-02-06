@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Stop
-docker stop tap2021
+docker stop bot1
 
 # Remove previuos container 
-docker container rm tap2021
+docker container rm bot1
 
 # Build
-docker build ../docker_sd/ -t tap2021:showdown
+docker build ../docker_sd/ -t bot1:showdown
 
 #Run with environment file
-docker run --ip 10.100.0.20 --network poke -p 5000:5000 --env-file ../docker_sd/tap2021.env tap2021:showdown
+docker run --ip 10.100.0.20 --network poke -p 5000:5000 --name bot1 --env-file ../docker_sd/env_files/bot1.env bot1:showdown

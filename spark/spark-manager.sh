@@ -5,27 +5,23 @@
 
 echo "Running action ${SPARK_ACTION}"
 case ${SPARK_ACTION} in
-"example")
-echo "Running example ARGS $@"
-./bin/run-example $@
-;;
-"spark-shell")
-./bin/spark-shell --master local[2]
-;;
-"pyspark")
-./bin/pyspark --master local[2]
-;;
+
 "spark-submit-python")
+ ./bin/spark-submit --packages $2 /opt/tap/$1
+;;
+"showdown")
 #  ./bin/spark-submit --packages $2 /opt/tap/$1
-./bin/spark-submit --packages "org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.5,org.elasticsearch:elasticsearch-hadoop:7.7.0" /opt/tap/full_data_test.py
+./bin/spark-submit --packages "org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.5,org.elasticsearch:elasticsearch-hadoop:7.7.0" /opt/tap/showdown_es.py
 ;;
-"spark-submit-apps")
- ./bin/spark-submit --packages $3 --class $1 /opt/tap/apps/$2
+"dataframe")
+#  ./bin/spark-submit --packages $2 /opt/tap/$1
+./bin/spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.5 /opt/tap/dataframe.py
 ;;
-"pytap")
-cd /opt/tap/
-python ${TAP_CODE}
+"training")
+#  ./bin/spark-submit --packages $2 /opt/tap/$1
+./bin/spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.5 /opt/tap/training.py
 ;;
+
 "bash")
 while true
 do
