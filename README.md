@@ -30,7 +30,7 @@ Then move into the folder *pokemon_tap*:
 ```
 cd path/to/pokemon_tap/
 ```
-Run all the docker containers executing the following line:
+Run all the docker containers executing the following line (before exectuing, make sure you don't have another docker network, with the same name using ``` docker network rm poke ```:
 ```
 docker-compose up
 ```
