@@ -12,4 +12,4 @@ Before running the scripts, assure yourself that the scripts execution mode is n
 - ```./network.sh```: create a Docker Network (external to the docker-compose one).
 - ```./showdownBot.sh```: run a single battle bot.
 - ```./sparkSubmitPython.sh```: script to run some pyspark code (requires .py file directory (spark/code/), *maven repository file* matching artifact:kafka_version:spark_version and running Kafka with an existing topic). 
-- ```./spark[Showdown][Dataframe][Training].sh```: scripts tailored respectively on the project to run main spark service, spark dataframe and machine learning model training (see above requirements).   
+- ```./spark[Showdown][Dataframe][Training].sh```: scripts tailored respectively on the project to run main spark service, spark dataframe and machine learning model training (see the requirements above).   
