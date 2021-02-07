@@ -67,37 +67,37 @@ services:
     volumes: 
       - shared_volume:/shared_data/
 
-  # spark_dataframe:
-  #   build: spark
-  #   image: spark:showdown
-  #   # container_name: spark_dataframe
-  #   depends_on: 
-  #     - elasticsearch
-  #   networks:
-  #     - poke
-  #   ports: 
-  #     - "4041:4041"
-  #   environment: 
-  #     - "SPARK_ACTION=dataframe"
-  #   restart: on-failure
-  #   volumes: 
-  #     - shared_volume:/shared_data/
+  spark_dataframe:
+    build: spark
+    image: spark:showdown
+    # container_name: spark_dataframe
+    depends_on: 
+      - elasticsearch
+    networks:
+      - poke
+    ports: 
+      - "4041:4041"
+    environment: 
+      - "SPARK_ACTION=dataframe"
+    restart: on-failure
+    volumes: 
+      - shared_volume:/shared_data/
       
-  # spark_training:
-  #   build: spark
-  #   image: spark:showdown
-  #   # container_name: spark_training
-  #   depends_on: 
-  #     - elasticsearch
-  #     # - spark_dataframe
-  #   networks:
-  #     - poke
-  #   ports: 
-  #     - "4042:4042"
-  #   environment: 
-  #     - "SPARK_ACTION=training"
-  #   volumes: 
-  #     - shared_volume:/shared_data/
+  spark_training:
+    build: spark
+    image: spark:showdown
+    # container_name: spark_training
+    depends_on: 
+      - elasticsearch
+      # - spark_dataframe
+    networks:
+      - poke
+    ports: 
+      - "4042:4042"
+    environment: 
+      - "SPARK_ACTION=training"
+    volumes: 
+      - shared_volume:/shared_data/
    
   elasticsearch:
     build: elasticsearch

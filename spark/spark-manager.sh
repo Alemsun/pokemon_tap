@@ -7,7 +7,7 @@ echo "Running action ${SPARK_ACTION}"
 case ${SPARK_ACTION} in
 
 "spark-submit-python")
- ./bin/spark-submit --packages $2 /opt/tap/$1
+./bin/spark-submit --packages $2 /opt/tap/$1
 ;;
 "showdown")
 #  ./bin/spark-submit --packages $2 /opt/tap/$1

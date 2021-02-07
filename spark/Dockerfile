@@ -7,7 +7,9 @@ ENV PATH $SPARK_DIR/bin:$PATH
 
 # ADD setup/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz /opt
 RUN apt-get update && apt-get -y install bash python python-pip netcat python-pandas libatlas3-base libopenblas-base wget
-RUN wget https://archive.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz /opt
+RUN wget -O spark-${SPARK_VERSION}-bin-hadoop2.7.tgz https://archive.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz \
+    && tar -xvzf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
+    && mv spark-${SPARK_VERSION}-bin-hadoop2.7 /opt
 
 RUN pip install pyspark numpy elasticsearch scikit-learn scipy matplotlib
 # Create Sym Link 
