@@ -32,12 +32,12 @@ docker build ../docker_sd/ -t bot8:showdown
 docker build ../docker_sd/ -t bot9:showdown
 
 #Run with environment file
-docker run --ip 10.100.0.19 -d --network project_poke --name bot2_compose --env-file ../docker_sd/env_files/bot2.env bot2:showdown
-docker run --ip 10.100.0.18 -d --network project_poke --name bot3_compose --env-file ../docker_sd/env_files/bot3.env bot3:showdown
-docker run --ip 10.100.0.17 -d --network project_poke --name bot4_compose --env-file ../docker_sd/env_files/bot4.env bot4:showdown
-docker run --ip 10.100.0.16 -d --network project_poke --name bot5_compose --env-file ../docker_sd/env_files/bot5.env bot5:showdown
-docker run --ip 10.100.0.15 -d --network project_poke --name bot6_compose --env-file ../docker_sd/env_files/bot6.env bot6:showdown
-docker run --ip 10.100.0.14 -d --network project_poke --name bot7_compose --env-file ../docker_sd/env_files/bot7.env bot7:showdown
-docker run --ip 10.100.0.13 -d --network project_poke --name bot8_compose --env-file ../docker_sd/env_files/bot8.env bot8:showdown
-docker run --ip 10.100.0.12    --network project_poke --name bot9_compose --env-file ../docker_sd/env_files/bot9.env bot9:showdown
+docker run --ip 10.100.0.19 -d --network pokemon_tap_poke --name bot2_compose --env-file ../docker_sd/env_files/bot2.env bot2:showdown
+docker run --ip 10.100.0.18 -d --network pokemon_tap_poke --name bot3_compose --env-file ../docker_sd/env_files/bot3.env bot3:showdown
+docker run --ip 10.100.0.17 -d --network pokemon_tap_poke --name bot4_compose --env-file ../docker_sd/env_files/bot4.env bot4:showdown
+docker run --ip 10.100.0.16 -d --network pokemon_tap_poke --name bot5_compose --env-file ../docker_sd/env_files/bot5.env bot5:showdown
+docker run --ip 10.100.0.15 -d --network pokemon_tap_poke --name bot6_compose --env-file ../docker_sd/env_files/bot6.env bot6:showdown
+docker run --ip 10.100.0.14 -d --network pokemon_tap_poke --name bot7_compose --env-file ../docker_sd/env_files/bot7.env bot7:showdown
+docker run --ip 10.100.0.13 -d --network pokemon_tap_poke --name bot8_compose --env-file ../docker_sd/env_files/bot8.env bot8:showdown
+docker run --ip 10.100.0.12    --network pokemon_tap_poke --name bot9_compose --env-file ../docker_sd/env_files/bot9.env bot9:showdown
 
