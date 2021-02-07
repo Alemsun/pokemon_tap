@@ -39,6 +39,7 @@ services:
         ipv4_address: "10.100.0.20"
     ports: 
       - "5000:5000"
+    restart: always
     env_file: docker_sd/env_files/bot1.env
   
   logstash:
@@ -67,26 +68,26 @@ services:
     volumes: 
       - shared_volume:/shared_data/
 
-  spark_dataframe:
-    build: spark
-    image: spark:showdown
-    # container_name: spark_dataframe
-    depends_on: 
-      - elasticsearch
-    networks:
-      - poke
-    ports: 
-      - "4041:4041"
-    environment: 
-      - "SPARK_ACTION=dataframe"
-    restart: on-failure
-    volumes: 
-      - shared_volume:/shared_data/
+  # spark_dataframe:
+  #   build: spark
+  #   image: spark:showdown
+  #   container_name: spark_dataframe
+  #   depends_on: 
+  #     - elasticsearch
+  #   networks:
+  #     - poke
+  #   ports: 
+  #     - "4041:4041"
+  #   environment: 
+  #     - "SPARK_ACTION=dataframe"
+  #   restart: on-failure
+  #   volumes: 
+  #     - shared_volume:/shared_data/
       
   spark_training:
     build: spark
     image: spark:showdown
-    # container_name: spark_training
+    container_name: spark_training
     depends_on: 
       - elasticsearch
       # - spark_dataframe

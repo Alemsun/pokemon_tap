@@ -56,15 +56,9 @@ schema = tp.StructType([
 # pokeDF = spark.createDataFrame(spark.sparkContext.emptyRDD(), schema = csv_schema)
 
 # Load an existing dataframe from the shared volume or from dataset folder
-# df = spark.read.csv('../tap/spark/dataset/pokeDF.csv', schema, header=True, sep =',')
+df = spark.read.csv('../tap/spark/dataset/pokeDF.csv', schema, header=True, sep =',')
 # df = spark.read.csv('/shared_data/pokeDF.csv', schema, header=True, sep =',')
 
-try:
-    df = spark.read.csv('/shared_data/pokeDF.csv', schema, header=True, sep =',')
-    if df is None:
-        df = spark.read.csv('../tap/spark/dataset/pokeDF.csv', schema, header=True, sep =',')
-except:
-    print("DATAFRAME LOADING ERROR")
 
 pokeDF = df.select('pokemon', 'win')
 pokeDF.show()

@@ -54,6 +54,8 @@ csv_schema = tp.StructType([
 
 # Loading dataframe from "shared_data/" folder, found in the shared volume between containers
 inputDF = spark.read.csv('../tap/spark/dataset/pokeDF.csv', csv_schema, header=True, sep =',')
+# inputDF = spark.read.csv('/shared_data/pokeDF.csv', csv_schema, header=True, sep =',')
+
 df = inputDF.persist(pyspark.StorageLevel.MEMORY_AND_DISK)
 pokeDF = df.select('pokemon', 'win')
 pokeDF.show()
