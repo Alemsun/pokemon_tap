@@ -10,7 +10,7 @@ from pyspark.streaming import StreamingContext
 from pyspark.sql import SparkSession
 from pyspark.sql.session import SparkSession
 from pyspark.sql import Row
-from pyspark.sql.types import StringType, StructType, StructField
+from pyspark.sql.types import StringType, StructType, StructField, DateType
 from pyspark.conf import SparkConf
 from pyspark.ml import Pipeline
 from pyspark.ml.feature import StopWordsRemover, Word2Vec, RegexTokenizer
@@ -68,8 +68,8 @@ mapping = {
                 "type": "text"
             },
             "timestamp":{
-                "type": "date",
-                "format": "yyyy-MM-dd HH:mm:ss"
+                "type": "date" 
+                #, "format": "dd/MM/yyyy, HH:mm:ss"
             },
             "p1":{
                 "name":{
@@ -85,12 +85,12 @@ mapping = {
                     "type": "text"
                 }
             },
-            "p1":{ "name":{ "type": "text"}, "ability1":{ "type": "text"}, "item1":{ "type": "text"}, "type1":{ "type": "text"} },
-            "p2":{ "name":{ "type": "text"}, "ability2":{ "type": "text"}, "item2":{ "type": "text"}, "type2":{ "type": "text"} },
-            "p3":{ "name":{ "type": "text"}, "ability3":{ "type": "text"}, "item3":{ "type": "text"}, "type3":{ "type": "text"} },
-            "p4":{ "name":{ "type": "text"}, "ability4":{ "type": "text"}, "item4":{ "type": "text"}, "type4":{ "type": "text"} },
-            "p5":{ "name":{ "type": "text"}, "ability5":{ "type": "text"}, "item5":{ "type": "text"}, "type5":{ "type": "text"} },
-            "p6":{ "name":{ "type": "text"}, "ability6":{ "type": "text"}, "item6":{ "type": "text"}, "type6":{ "type": "text"} }
+            "p1":{ "type": "text"}, "ability1":{ "type": "text"}, "item1":{ "type": "text"}, "type1":{ "type": "text"},
+            "p2":{ "type": "text"}, "ability2":{ "type": "text"}, "item2":{ "type": "text"}, "type2":{ "type": "text"},
+            "p3":{ "type": "text"}, "ability3":{ "type": "text"}, "item3":{ "type": "text"}, "type3":{ "type": "text"},
+            "p4":{ "type": "text"}, "ability4":{ "type": "text"}, "item4":{ "type": "text"}, "type4":{ "type": "text"},
+            "p5":{ "type": "text"}, "ability5":{ "type": "text"}, "item5":{ "type": "text"}, "type5":{ "type": "text"},
+            "p6":{ "type": "text"}, "ability6":{ "type": "text"}, "item6":{ "type": "text"}, "type6":{ "type": "text"}
         }
     }
 }
@@ -198,7 +198,8 @@ def get_prediction_json(key,rdd):
                                 p4=t[14], ability4=t[15], item4=t[16], type4=t[17],
                                 p5=t[18], ability5=t[19], item5=t[20], type5=t[21],
                                 p6=t[22], ability6=t[23], item6=t[24], type6=t[25],
-                                opponent=t[26], turns=t[27], timestamp= datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+                                opponent=t[26], turns=t[27], 
+                                timestamp= datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
                                 ))
     # create a spark dataframe
     battleDataFrame =  spark.createDataFrame(rowRdd, schema = battleSchema)
