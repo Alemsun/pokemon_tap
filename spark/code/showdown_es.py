@@ -62,20 +62,20 @@ mapping = {
                 "type": "float"
             },
             "opponet" :{
-                "type": "text"
+                "type": "keyword"
             },
             "turns" : {
-                "type": "text"
+                "type": "keyword"
             },
             "timestamp":{
                 "type": "date"
             },
-            "p1":{ "type": "text"}, "ability1":{ "type": "text"}, "item1":{ "type": "text"}, "type1":{ "type": "text"},
-            "p2":{ "type": "text"}, "ability2":{ "type": "text"}, "item2":{ "type": "text"}, "type2":{ "type": "text"},
-            "p3":{ "type": "text"}, "ability3":{ "type": "text"}, "item3":{ "type": "text"}, "type3":{ "type": "text"},
-            "p4":{ "type": "text"}, "ability4":{ "type": "text"}, "item4":{ "type": "text"}, "type4":{ "type": "text"},
-            "p5":{ "type": "text"}, "ability5":{ "type": "text"}, "item5":{ "type": "text"}, "type5":{ "type": "text"},
-            "p6":{ "type": "text"}, "ability6":{ "type": "text"}, "item6":{ "type": "text"}, "type6":{ "type": "text"}
+            "p1":{ "type": "keyword"}, "ability1":{ "type": "keyword"}, "item1":{ "type": "keyword"}, "type1":{ "type": "keyword"},
+            "p2":{ "type": "keyword"}, "ability2":{ "type": "keyword"}, "item2":{ "type": "keyword"}, "type2":{ "type": "keyword"},
+            "p3":{ "type": "keyword"}, "ability3":{ "type": "keyword"}, "item3":{ "type": "keyword"}, "type3":{ "type": "keyword"},
+            "p4":{ "type": "keyword"}, "ability4":{ "type": "keyword"}, "item4":{ "type": "keyword"}, "type4":{ "type": "keyword"},
+            "p5":{ "type": "keyword"}, "ability5":{ "type": "keyword"}, "item5":{ "type": "keyword"}, "type5":{ "type": "keyword"},
+            "p6":{ "type": "keyword"}, "ability6":{ "type": "keyword"}, "item6":{ "type": "keyword"}, "type6":{ "type": "keyword"}
         }
     }
 }
