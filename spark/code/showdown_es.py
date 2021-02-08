@@ -68,8 +68,7 @@ mapping = {
                 "type": "text"
             },
             "timestamp":{
-                "type": "date" 
-                , "format": "dd/MM/yyyy, HH:mm:ss"
+                "type": "date"
             },
             "p1":{ "type": "text"}, "ability1":{ "type": "text"}, "item1":{ "type": "text"}, "type1":{ "type": "text"},
             "p2":{ "type": "text"}, "ability2":{ "type": "text"}, "item2":{ "type": "text"}, "type2":{ "type": "text"},
@@ -185,7 +184,7 @@ def get_prediction_json(key,rdd):
                                 p5=t[18], ability5=t[19], item5=t[20], type5=t[21],
                                 p6=t[22], ability6=t[23], item6=t[24], type6=t[25],
                                 opponent=t[26], turns=t[27], 
-                                timestamp= datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
+                                timestamp= datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
                                 ))
     # create a spark dataframe
     battleDataFrame =  spark.createDataFrame(rowRdd, schema = battleSchema)
