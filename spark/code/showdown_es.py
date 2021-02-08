@@ -69,21 +69,7 @@ mapping = {
             },
             "timestamp":{
                 "type": "date" 
-                #, "format": "dd/MM/yyyy, HH:mm:ss"
-            },
-            "p1":{
-                "name":{
-                    "type": "text"
-                },
-                "ability1":{
-                    "type": "text"
-                },
-                "item1":{
-                    "type": "text"
-                },
-                "type1":{
-                    "type": "text"
-                }
+                , "format": "dd/MM/yyyy, HH:mm:ss"
             },
             "p1":{ "type": "text"}, "ability1":{ "type": "text"}, "item1":{ "type": "text"}, "type1":{ "type": "text"},
             "p2":{ "type": "text"}, "ability2":{ "type": "text"}, "item2":{ "type": "text"}, "type2":{ "type": "text"},
