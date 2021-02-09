@@ -41,3 +41,4 @@ localhost:5601
 
 Feel free to explore and create new visualizations!
 
+## Troubleshooting
