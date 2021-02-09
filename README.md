@@ -22,7 +22,7 @@ More technical details in the specific folder, more details on the actual usage 
 - Web Browser
 
 ## Usage
-First, download or clone the repository using:
+First, download or clone the repository using (please rename the directory ```pokemon_tap/``` to avoid docker network inconsistencies):
 ```
 git clone https://github.com/Alemsun/pokemon_tap.git
 ```
