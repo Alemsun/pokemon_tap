@@ -39,4 +39,4 @@ Finally, after a short period of time, necessary to produce data from the Showdo
 localhost:5601
 ```
 
-Feel free to explore and create new visualizations! Or simply import my visualizations located in ```kibana/export.jdson``` to ```Kibana > Management > Saved Objects > Import```.
+Feel free to explore and create new visualizations! Or simply import my visualizations located in ```kibana/export.ndjson``` to ```Kibana > Management > Saved Objects > Import```.
