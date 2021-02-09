@@ -30,7 +30,7 @@ Then move into the folder *pokemon_tap*:
 ```
 cd path/to/pokemon_tap/
 ```
-Run all the docker containers executing the following line (before exectuing, make sure you don't have another docker network, with the same name using ``` docker network rm poke ```:
+Run all the docker containers executing the following line (before exectuing, make sure you don't have another docker network with the same name using ``` docker network rm poke ``` and giving execution permission to ```kafka/kafka-manager.sh``` and ```spark/spark-manager.sh```):
 ```
 docker-compose up
 ```
@@ -40,5 +40,3 @@ localhost:5601
 ```
 
 Feel free to explore and create new visualizations!
-
-## Troubleshooting
