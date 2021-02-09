@@ -77,7 +77,7 @@ mapping = {
                 "type": "keyword"
             },
             "turns" : {
-                "type": "keyword"
+                "type": "float"
             },
             "timestamp":{
                 "type": "date"
