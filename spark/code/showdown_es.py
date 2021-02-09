@@ -10,7 +10,7 @@ from pyspark.streaming import StreamingContext
 from pyspark.sql import SparkSession
 from pyspark.sql.session import SparkSession
 from pyspark.sql import Row
-from pyspark.sql.types import StringType, StructType, StructField, DateType
+from pyspark.sql.types import StringType, StructType, StructField, DateType, ArrayType
 from pyspark.conf import SparkConf
 from pyspark.ml import Pipeline
 from pyspark.ml.feature import StopWordsRemover, Word2Vec, RegexTokenizer
@@ -55,13 +55,25 @@ mapping = {
             "pokemon": {
                 "type": "text"
             },
+            "poke":{
+                "type": "keyword"
+            },
+            "abilities":{
+                "type": "keyword"
+            },
+            "items":{
+                "type": "keyword"
+            },
+            "types":{
+                "type": "keyword"
+            },
             "win": {
                 "type": "float"
             },
             "prediction":{
                 "type": "float"
             },
-            "opponet" :{
+            "opponent" :{
                 "type": "keyword"
             },
             "turns" : {
@@ -132,6 +144,12 @@ battleSchema = tp.StructType([
     tp.StructField(name = "p5", dataType=tp.StringType(), nullable=True), tp.StructField(name = "ability5", dataType=tp.StringType(), nullable=True), tp.StructField(name = "item5", dataType=tp.StringType(), nullable=True), tp.StructField(name = "type5", dataType=tp.StringType(), nullable=True),
     # p6
     tp.StructField(name = "p6", dataType=tp.StringType(), nullable=True), tp.StructField(name = "ability6", dataType=tp.StringType(), nullable=True), tp.StructField(name = "item6", dataType=tp.StringType(), nullable=True), tp.StructField(name = "type6", dataType=tp.StringType(), nullable=True),
+    
+    tp.StructField("poke", ArrayType(StringType())),
+    tp.StructField("abilities", ArrayType(StringType())),
+    tp.StructField("items", ArrayType(StringType())),
+    tp.StructField("types", ArrayType(StringType()))
+
 ])
 
 # pipelineFit = PipelineModel.load('/opt/tap/spark/model/')
@@ -164,7 +182,29 @@ def get_prediction_json(key,rdd):
                 json_object["pokemon"][5]["name"], json_object["pokemon"][5]["ability"],json_object["pokemon"][5]["item"], json_object["pokemon"][5]["types"][0],
 
                 json_object["battle"][0]["player"],
-                json_object["battle"][0]["turns"]
+                json_object["battle"][0]["turns"],
+
+                json_object["pokemon"][0]["ability"] + space +
+                json_object["pokemon"][1]["ability"] + space +
+                json_object["pokemon"][2]["ability"] + space +
+                json_object["pokemon"][3]["ability"] + space +
+                json_object["pokemon"][4]["ability"] + space +
+                json_object["pokemon"][5]["ability"],
+
+                json_object["pokemon"][0]["item"] + space +
+                json_object["pokemon"][1]["item"] + space +
+                json_object["pokemon"][2]["item"] + space +
+                json_object["pokemon"][3]["item"] + space +
+                json_object["pokemon"][4]["item"] + space +
+                json_object["pokemon"][5]["item"],
+
+                json_object["pokemon"][0]["types"][0] + space +
+                json_object["pokemon"][1]["types"][0] + space +
+                json_object["pokemon"][2]["types"][0] + space +
+                json_object["pokemon"][3]["types"][0] + space +
+                json_object["pokemon"][4]["types"][0] + space +
+                json_object["pokemon"][5]["types"][0]
+
             ))
     battlestr = battle.collect()
     if not battlestr:
@@ -184,15 +224,18 @@ def get_prediction_json(key,rdd):
                                 p5=t[18], ability5=t[19], item5=t[20], type5=t[21],
                                 p6=t[22], ability6=t[23], item6=t[24], type6=t[25],
                                 opponent=t[26], turns=t[27], 
-                                timestamp= datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
+                                timestamp= datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                poke = t[0].split(" "),
+                                abilities= t[28].split(" "),
+                                items = t[29].split(" "),
+                                types = t[30].split(" ")
                                 ))
     # create a spark dataframe
     battleDataFrame =  spark.createDataFrame(rowRdd, schema = battleSchema)
     battleDataFrame.show()
+
     # transform the data using the pipeline and get the predicted sentiment
     data = pipelineFit.transform(battleDataFrame)
-    #add timestamp
-    # data.withColumn("timestamp", current_timestamp().cast("string"))
     data.show()
 
     new = data.rdd.map(lambda item: {'pokemon': item['pokemon'], 'win': item['win'], 'prediction':item['prediction'], 
@@ -202,7 +245,13 @@ def get_prediction_json(key,rdd):
                                     'p4':item['p4'], 'ability4':item['ability4'], 'item4':item['item4'], 'type4':item['type4'],
                                     'p5':item['p5'], 'ability5':item['ability5'], 'item5':item['item5'], 'type5':item['type5'],
                                     'p6':item['p6'], 'ability6':item['ability6'], 'item6':item['item6'], 'type6':item['type6'],
-                                    'opponent':item['opponent'], 'turns':item['turns'], 'timestamp':item['timestamp']})
+                                    'opponent':item['opponent'], 'turns':item['turns'], 'timestamp':item['timestamp'],
+                                    'poke':item['poke'],
+                                    'abilities':item['abilities'],
+                                    'items':item['items'],
+                                    'types':item['types']
+                                    })
+
 
     final_rdd = new.map(json.dumps).map(lambda x: ('key', x))
     print("FINAL RDD")
