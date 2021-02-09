@@ -22,7 +22,7 @@ More technical details in the specific folder, more details on the actual usage 
 - Web Browser
 
 ## Usage
-First, download or clone the repository using:
+First, download or clone the repository using (please rename the directory ```pokemon_tap/``` to avoid docker network inconsistencies):
 ```
 git clone https://github.com/Alemsun/pokemon_tap.git
 ```
@@ -30,7 +30,7 @@ Then move into the folder *pokemon_tap*:
 ```
 cd path/to/pokemon_tap/
 ```
-Run all the docker containers executing the following line (before exectuing, make sure you don't have another docker network, with the same name using ``` docker network rm poke ```:
+Run all the docker containers executing the following line (before exectuing, make sure you don't have another docker network with the same name using ``` docker network rm poke ``` and giving execution permission to ```kafka/kafka-manager.sh``` and ```spark/spark-manager.sh```):
 ```
 docker-compose up
 ```
@@ -39,5 +39,4 @@ Finally, after a short period of time, necessary to produce data from the Showdo
 localhost:5601
 ```
 
-Feel free to explore and create new visualizations!
-
+Feel free to explore and create new visualizations! Or simply import my visualizations located in ```kibana/export.jdson``` to ```Kibana > Management > Saved Objects > Import```.
