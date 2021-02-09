@@ -7,7 +7,7 @@ Before running the scripts, assure yourself that the scripts execution mode is n
 - ```./elasticsearch.sh```:       run Elasticsearch service.
 - ```./kafkaStartServer.sh```: run Kafka Server, needs data from Logstash to create "Showdown Topic" (requires Zookeeper).
 - ```./kafkaStartZk.sh```: run Zookeeper Server.
-- ```./kibana.sh```: run Kibana, used an ElasticSearch UI, open *localhost:5601* on a Web Browser to connect.
+- ```./kibana.sh```: run Kibana, used as an ElasticSearch UI, open *localhost:5601* on a Web Browser to connect.
 - ```./logstash.sh```: run Logstash to send battle events to Kafka (requires showdownBot, Zookeeper and Kafka).
 - ```./network.sh```: create a Docker Network (external to the docker-compose one).
 - ```./showdownBot.sh```: run a single battle bot.
