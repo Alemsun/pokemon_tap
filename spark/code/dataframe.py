@@ -20,7 +20,7 @@ import os
 # Applicazione Spark per la creazione o espansione di un dataframe (.csv) contenente una stringa
 # che indica i pokemon utilizzati in battaglia e l'esito della stessa.
 
-# START SCRIPT IN bin/ (requires running Zookeeper&KafkaServer, Logstash ed battling bots)
+# START SCRIPT IN bin/ (requires running Zookeeper&KafkaServer, Logstash and battling bots)
 # ./sparkDataframe.sh
 #       or
 # ./sparkSubmitPython.sh dataframe.py org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.5
